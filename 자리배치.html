@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="360" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>School</title>
+  </head>
+  <body>
+      <br><br>
+    <div class="container  alert alert-primary" >
+      <h1 style="text-align: center;"> 칠     판</h1>
+     </div>
+    <div class="container  alert alert-primary" >
+      <div class="row row-cols-5" id="buttons"> yy</div>
+     </div>
+  </body>
+  <script>
+    const member=Array(25).fill(0);''
+    const stu=["연","대","성","동","만","상","영","위","준","추","현","준","가","홍","우","오","이","수","나","석",
+"찬","장","훈","성","환"];
+
+    btn = "";
+    let bun;
+    for (let i = 1; i <=5; i++) {
+     for(let j=0;j<5;j++){
+      bun=i+j*5;
+      id = "bun" + bun;
+      btn += `<div class="col"><input type='button' id='${id}' value='${bun}' onclick =res(${bun})> <span id='${id}span'>^^</span></div>`;
+     }
+
+     
+    }
+  
+    document.getElementById("buttons").innerHTML = btn;
+    res = (i) => {
+      console.log(i);
+
+      while(1){    
+      randnum=Math.floor(Math.random()*(26-1)+1);
+      flag=0;
+      for(j=0;j<25;j++){
+        if(member[j]==randnum) {
+          flag=1;
+          break;
+        }
+      }
+      if(flag==0){
+        member[i-1]=randnum;
+        break;
+      }
+      else continue;
+    }
+    idspan="bun" +i+"span";
+    console.log(member)
+    document.getElementById(idspan).innerHTML = stu[member[i-1]-1]+ member[i-1];
+    };
+  </script>
+</html>
